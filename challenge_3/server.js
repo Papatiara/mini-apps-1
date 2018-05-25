@@ -55,8 +55,5 @@ app.post('/', function(req, res, next) {
       });
 });
 
-app.get('', function(req, res) {
-  res.redirect('')
-})
 
 app.listen(3000, () => console.log('listening to 3000'))

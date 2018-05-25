@@ -47,15 +47,6 @@ sendData(message) {
           }).catch(err => err);
   } 
 
-get() {
-    fetch('http://localhost:3000', {
-      method: 'GET',
-    }).then(res => {
-      console.log(res);
-      console.log('foi')
-    }).catch(err => err);
-}
-
   next3(e) {
    e.preventDefault();
    this.setState({
