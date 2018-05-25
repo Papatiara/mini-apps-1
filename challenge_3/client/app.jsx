@@ -1,5 +1,6 @@
 class FormThree extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props);
     this.state = {
       click: false,
@@ -47,9 +48,10 @@ sendData(message) {
   } 
 
 get() {
-    fetch('http://localhost:3000/', {
+    fetch('http://localhost:3000', {
       method: 'GET',
     }).then(res => {
+      console.log(res);
       console.log('foi')
     }).catch(err => err);
 }
@@ -81,7 +83,7 @@ get() {
    this.setState({
      click:true
    })
-   this.get()
+   this.props.stateFunc3()
   }
   render() {
     if (this.state.click === true) {
@@ -180,6 +182,7 @@ class FormTwo extends React.Component {
       city={this.state.city}
       zipcode={this.state.ZipCode}
       data1={this.props}
+      stateFunc3={this.props.stateFunc2}
       />
       )
     }
@@ -204,6 +207,7 @@ class FormTwo extends React.Component {
 
 class FormOne extends React.Component {
     constructor(props) {
+      console.log(props)
       super(props);
       this.state = {
           name: '',
@@ -235,7 +239,8 @@ render() {
     return ( <FormTwo 
     name={this.state.name} 
     email={this.state.email}
-    pass={this.state.password}/>
+    pass={this.state.password}
+    stateFunc2={this.props.stateFunc} />
     )
   }
   return (
@@ -259,18 +264,25 @@ class App extends React.Component {
       super(props);
 
       this.state = {
-        check: false,
+        check: false, 
       }
   };
     checkout() {
+      if (this.state.check === false) {
       this.setState({
         check: true,
-      })     
+      })
+    } else {
+      this.setState({
+        check: false,
+      })
     }
+    }
+
 
 render() {
   if (this.state.check === true)  {
-    return  <FormOne />
+    return  <FormOne stateFunc={this.checkout.bind(this)}/>
   }
   return (
     <div>  

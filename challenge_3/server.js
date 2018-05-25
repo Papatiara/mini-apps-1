@@ -10,7 +10,6 @@ mongoose.connect("mongodb://localhost:27017/patricia-db");
 
 var router = express.Router()
 app.use(express.static(__dirname + '/public'));
-// app.use(express.static('/index.html'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true})); 
 
@@ -56,8 +55,8 @@ app.post('/', function(req, res, next) {
       });
 });
 
-app.get('/', function(req, res) {
-  res.redirect(__dirname + '/index.html')
+app.get('', function(req, res) {
+  res.redirect('')
 })
 
 app.listen(3000, () => console.log('listening to 3000'))
